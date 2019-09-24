@@ -1,0 +1,53 @@
+.App {
+  background-color: #FFFFFF;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px;
+  font-size: 30px;
+  color: black;
+}
+
+.App-desc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: #505050;
+}
+
+.App-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 100px 25px 100px;
+  min-height: 700px;
+  min-width: 700px;
+  padding: 16px;
+  border: solid 1px grey;
+}
+
+.Chart-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+}
+
+.Chart-desc {
+  width: 500px;
+}
+
+.Chart-row {
+  display: inline-flex;
+}
+
+.Chart-item {
+  padding: 32px;
+}
