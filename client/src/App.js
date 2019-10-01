@@ -1,5 +1,9 @@
 import React from "react";
 
+import BarChart from "./components/BarChart/BarChart.js";
+import Map from "./components/Map";
+
+
 import "./App.css";
 import postman from "./postMAN.png";
 import BarChart from "./components/BarChart/BarChart.js";
@@ -9,6 +13,7 @@ import Map from "./components/Map/Map";
 function App() {
   return (
     <div className="App">
+
       <div className="wrapper">
         <header className="App-header">
           We, the People 👨‍👩‍👧‍👦
