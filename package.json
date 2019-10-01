@@ -1,6 +1,6 @@
 {
-  "name": "d3-example-brewery-backend",
-  "version": "0.0.0",
+  "name": "d3-example-brewery",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "concurrently \"PORT=3001 node ./bin/www\" \"cd client && npm run start\""
