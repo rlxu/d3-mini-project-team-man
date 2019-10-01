@@ -1,15 +1,117 @@
 import React, { Component } from "react";
 import { select } from "d3-selection";
+import axios from "axios";
 import * as d3 from "d3";
+
+const API_SERVER_HOST =
+  process.env.REACT_APP_API_SERVER_HOST ||
+  "https://cors-anywhere.herokuapp.com/https://api.twitter.com/1.1/search/tweets.json";
 
 class CircularPacking extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      circleData: {}
+    };
     this.createCircularPackingChart = this.createCircularPackingChart.bind(
       this
     );
   }
   componentDidMount() {
+    const circles = {};
+    var config = {
+      headers: {
+        Authorization:
+          "Bearer AAAAAAAAAAAAAAAAAAAAAGC%2BAAEAAAAAQBDuL%2BuzLMt2L1V6vVejiYu%2By%2Fg%3DbhzUhGy3XIGSTOgi6ptQSBowr4dRRx4dmigMBNgiN3rS5RZ51l",
+        consumer_key: "Lv3IN1MKLABwVvpKrh7z13SuI",
+        "Content-Type": "application/x-www-form-urlencoded",
+        consumer_secret: "Z6uVPTfWvlraSNKoEDMqM35V2rRSGhh6vg4qN9RI4Vm7yutckT"
+      }
+    };
+    axios
+      .all([
+        axios.get(
+          API_SERVER_HOST + "?q=🥰&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=🙈&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=🤡&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=🤔&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=🤑&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=😂&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=👶&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=💂‍&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=🤺&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=🤹‍&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=👏&geocode=45.604186,-96.650757,2523km",
+          config
+        ),
+        axios.get(
+          API_SERVER_HOST + "?q=👃&geocode=45.604186,-96.650757,2523km",
+          config
+        )
+      ])
+      .then(
+        axios.spread(
+          (
+            heartface,
+            monkeyeyes,
+            clown,
+            thinking,
+            moneyeyes,
+            laughing,
+            baby,
+            hatman,
+            fencing,
+            juggling,
+            clap,
+            nose
+          ) => {
+            circles["heartface"] = heartface.data.statuses.length;
+            circles["monkeyeyes"] = monkeyeyes.data.statuses.length;
+            circles["clown"] = clown.data.statuses.length;
+            circles["thinking"] = thinking.data.statuses.length;
+            circles["moneyeyes"] = moneyeyes.data.statuses.length;
+            circles["laughing"] = laughing.data.statuses.length;
+            circles["baby"] = baby.data.statuses.length;
+            circles["hatman"] = hatman.data.statuses.length;
+            circles["fencing"] = fencing.data.statuses.length;
+            circles["juggling"] = juggling.data.statuses.length;
+            circles["clap"] = clap.data.statuses.length;
+            circles["nose"] = nose.data.statuses.length;
+            this.setState({ circleData: circles });
+            console.log(circles);
+          }
+        )
+      );
     this.createCircularPackingChart();
   }
   componentDidUpdate() {
@@ -22,23 +124,30 @@ class CircularPacking extends Component {
     var height = 460;
 
     var node = this.node;
-    console.log(node);
-    const data = this.props.data;
+    var data = this.props.data;
 
     // append the svg object to the body of the page
     const svg = select(node)
       .append("g")
       .attr("width", width)
       .attr("height", height);
-    console.log(svg);
+    // console.log(svg);
     // Read data
-    // d3.csv(
-    //   "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv",
-    //   function(data) {
-    //     // Filter a bit the data -> more than 1 million inhabitants
-    //     data = data.filter(function(d) {
-    //       return d.value > 10000000;
-    //     });
+    d3.csv(
+      "/api",
+      // "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv",
+      function(data) {
+        // Filter a bit the data -> more than 1 million inhabitants
+        // data = data.filter(function(d) {
+        //   return d.value > 10000000;
+        // });
+        console.log(data);
+      }
+    );
+
+    data = this.state.circleData;
+    console.log(data);
+    console.log(this.state.circleData);
 
     // Color palette for continents?
     var color = d3
@@ -69,7 +178,7 @@ class CircularPacking extends Component {
       Tooltip.style("opacity", 1);
     };
     var mousemove = function(d) {
-      Tooltip.html("<u>" + d.key + "</u>" + "<br>" + d + " inhabitants")
+      Tooltip.html("<u>" + d + "</u>" + "<br>" + d + " inhabitants")
         .style("left", d3.mouse(this)[0] + 20 + "px")
         .style("top", d3.mouse(this)[1] + "px");
     };
@@ -124,7 +233,7 @@ class CircularPacking extends Component {
           .forceCollide()
           .strength(0.2)
           .radius(function(d) {
-            return size(d.value) + 3;
+            return size(d) + 3;
           })
           .iterations(1)
       ); // Force that avoids circle overlapping

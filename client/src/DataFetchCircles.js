@@ -127,6 +127,7 @@ class DataFetchCircles extends Component {
               the rest of America loved these emojis as well.
             </p>
             <CircularPacking data={this.state.circleData} />
+            {/* <BarChart data={this.state.circleData} /> */}
           </div>
         </div>
       </div>
