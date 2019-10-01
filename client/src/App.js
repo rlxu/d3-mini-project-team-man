@@ -1,7 +1,7 @@
 import React from "react";
 
 import BarChart from "./components/BarChart/BarChart.js";
-import Map from './components/Map'
+import Map from './components/Map/Map'
 
 import "./App.css";
 
