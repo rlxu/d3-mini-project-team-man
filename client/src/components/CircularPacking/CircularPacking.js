@@ -69,7 +69,7 @@ class CircularPacking extends Component {
       Tooltip.style("opacity", 1);
     };
     var mousemove = function(d) {
-      Tooltip.html("<u>" + d.key + "</u>" + "<br>" + d.value + " inhabitants")
+      Tooltip.html("<u>" + d.key + "</u>" + "<br>" + d + " inhabitants")
         .style("left", d3.mouse(this)[0] + 20 + "px")
         .style("top", d3.mouse(this)[1] + "px");
     };
@@ -86,12 +86,12 @@ class CircularPacking extends Component {
       .append("circle")
       .attr("class", "circle")
       .attr("r", function(d) {
-        return size(d.value);
+        return size(d);
       })
       .attr("cx", width / 2)
       .attr("cy", height / 2)
       .style("fill", function(d) {
-        return color(d.region);
+        return color(d);
       })
       .style("fill-opacity", 0.8)
       .attr("stroke", "black")

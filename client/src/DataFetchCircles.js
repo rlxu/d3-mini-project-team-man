@@ -116,7 +116,7 @@ class DataFetchCircles extends Component {
   render() {
     return (
       <div>
-        <h3 className="Chart-title">Frequency of Our Favorite Emojis</h3>
+        <h3 className="Chart-title">Frequency of Our Favorite Emojis 💛</h3>
         <div className="Chart-row">
           <div className="Chart-item">
             {/* <CircularPacking data={this.state.circleData} /> */}
