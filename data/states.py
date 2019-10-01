@@ -55,5 +55,16 @@ def random_data():
     with open('rand_data.json', 'w+') as f:
         json.dump(rand_data, f)
 
-process_latlong()
-random_data()
+def process_states():
+    with open('states.txt', 'r') as f:
+        lines = f.read().split('\n')
+        states = [line.split(' - ') for line in lines]
+        data = {}
+        for state, abbr in states:
+            data[state] = state
+            data[abbr] = state
+x`
+    with open('states-abbr.json', 'w+') as f:
+        json.dump(data, f)
+
+process_states()

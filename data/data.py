@@ -1,4 +1,4 @@
-import requests
+import json
 import tweepy
 import os
 from tqdm import tqdm
@@ -9,7 +9,7 @@ api = tweepy.API(auth,wait_on_rate_limit=True)
 geocode = '45.604186,-96.650757,2523km'
 
 def get_tweets(q):
-    return [','.join([tweet.created_at.__repr__(), tweet.user.location, tweet.text]) for tweet in
+    return [{'timestamp': tweet.created_at.strftime('%s'), 'location': tweet.user.location, 'text': tweet.text} for tweet in
             tweepy.Cursor(api.search, q=q, lang='eu', geocode=geocode).items()]
 
 with open('emoji.txt','r') as f:
@@ -22,9 +22,9 @@ for emoji in emojis:
     else:
         queries[-1] += ' OR ' + emoji
 
-with open('tweets.csv', 'w+') as f:
-    f.write('datetime,location,text\n')
+with open('tweets.json', 'w+') as f:
+    tweets = []
     for emoji in tqdm(emojis, desc='Fetching tweets for emoji...'):
-        for t in get_tweets(emoji):
-            f.write(t+'\n')
+        tweets += get_tweets(emoji)
+    json.dump(tweets, f)
 
