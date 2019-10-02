@@ -125,21 +125,20 @@ class CircularPacking extends Component {
 
     var node = this.node;
     var data = this.props.data;
-    data = Object.entries(data)
-        .reduce((acc, cur) => {
-            const newItem = {
-                emoji: cur[0],
-                count: cur[1]
-            }
-            acc.push(newItem)
-            return acc
-        }, [])
+    data = Object.entries(data).reduce((acc, cur) => {
+      const newItem = {
+        emoji: cur[0],
+        count: cur[1]
+      };
+      acc.push(newItem);
+      return acc;
+    }, []);
 
     // append the svg object to the body of the page
     const svg = select(node)
-    .attr("width", width)
-    .attr("height", height)
-      .append("g")
+      .attr("width", width)
+      .attr("height", height)
+      .append("g");
     // console.log(svg);
     // Read data
     // d3.csv(
@@ -198,44 +197,63 @@ class CircularPacking extends Component {
     // Initialize the circle: all located at the center of the svg area
     node = svg
       .append("g")
-        .attr("class", "group-container")
-        .selectAll("circle")
-        .data(data)
-        .enter()
-  node
+      .attr("class", "group-container")
+      .selectAll("circle")
+      .data(data)
+      .enter();
+    node
       .append("circle")
-        .attr("class", "circle")
-        .attr("cx", (width/2) )
-        .attr("cy", height/2)
-        .attr("r", function(d) {
-        return d.count;
-        })
-        .style("fill", function(d) {
+      .attr("class", "circle")
+      .attr("cx", width / 2)
+      .attr("cy", height / 2)
+      .attr("r", function(d) {
+        return d.count * 3;
+      })
+      .style("fill", function(d) {
         return color(d);
-        })
-        .style("fill-opacity", 0.8)
-        .attr("stroke", "black")
-        .style("stroke-width", 1)
-        .on("mouseover", mouseover) // What to do when hovered
-        .on("mousemove", mousemove)
-        .on("mouseleave", mouseleave)
-        .call(
-            d3
-              .drag() // call specific function when circle is dragged
-              .on("start", dragstarted)
-              .on("drag", dragged)
-              .on("end", dragended)
-         )
-      node.append('text')
-          .attr('class', 'emojis')
-          .text(d => d.emoji)
-          .attr('dx', d => d.x)
-          .attr('dy', d => d.y)
-          .attr('textAnchor', 'middle')
+      })
+      .style("fill-opacity", 0.8)
+      .attr("stroke", "black")
+      .style("stroke-width", 1)
+      .on("mouseover", mouseover) // What to do when hovered
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave)
+      .call(
+        d3
+          .drag() // call specific function when circle is dragged
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended)
+      );
+    node
+      .append("text")
+      .attr("class", "emojis")
+      .text(function(d) {
+        var textToEmoji = {
+          heartface: "🥰",
+          monkeyeyes: "🙈",
+          clown: "🤡",
+          thinking: "🤔",
+          moneyeyes: "🤑",
+          laughing: "😂",
+          baby: "👶",
+          hatman: "💂‍",
+          fencing: "🤺",
+          juggling: "🤹‍",
+          clap: "👏",
+          nose: "👃"
+        };
+        return textToEmoji[d.emoji];
+      })
+      .attr("dx", d => d.x - 5)
+      .attr("dy", d => d.y + 50)
+      .attr("font-size", function(d) {
+        return d.count * 2;
+      });
 
-      var circles = d3.selectAll('.circle')
-      var emojis = d3.selectAll('.emojis')
-      console.log(node)
+    var circles = d3.selectAll(".circle");
+    var emojis = d3.selectAll(".emojis");
+    console.log(node);
 
     // Features of the forces applied to the nodes:
     var simulation = d3
@@ -254,7 +272,7 @@ class CircularPacking extends Component {
           .forceCollide()
           .strength(0.2)
           .radius(function(d) {
-            return d.count;
+            return d.count * 2 + 15;
           })
           .iterations(1)
       ); // Force that avoids circle overlapping
@@ -269,9 +287,7 @@ class CircularPacking extends Component {
         .attr("cy", function(d) {
           return d.y;
         });
-        emojis
-            .attr('dx', d=>d.x)
-            .attr('dy', d=>d.y)
+      emojis.attr("dx", d => d.x).attr("dy", d => d.y);
     });
 
     // // What happens when a circle is dragged?
@@ -289,24 +305,10 @@ class CircularPacking extends Component {
       d.fx = null;
       d.fy = null;
     }
-
-
-  // node.append("text")
-  //     .attr("x", function(d) {
-  //         console.log(d)
-  //         return d.x;
-  //     })
-  //     .attr("y", function(d) { return d.y; })
-  //     .attr("dy", ".35em")
-  //     .text(function(d) { return d.emoji; });
   }
 
   render() {
-    return (
-      <svg ref={node => (this.node = node)}  fill={'#c8c8c8'}>
-
-      </svg>
-    );
+    return <svg ref={node => (this.node = node)} fill={"#c8c8c8"}></svg>;
   }
 }
 export default CircularPacking;

@@ -19,9 +19,9 @@ function App() {
           <img src={postman} className="postman" />
         </header>
         <div className="visualizations">
-           <DataFetchCircles />
+          <DataFetchCircles />
           <BarChart />
-          {/*<Map />*/}
+          <Map />
         </div>
       </div>
     </div>
