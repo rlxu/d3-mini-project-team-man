@@ -18,100 +18,100 @@ class CircularPacking extends Component {
     );
   }
   componentDidMount() {
-    const circles = {};
-    var config = {
-      headers: {
-        Authorization:
-          "Bearer AAAAAAAAAAAAAAAAAAAAAGC%2BAAEAAAAAQBDuL%2BuzLMt2L1V6vVejiYu%2By%2Fg%3DbhzUhGy3XIGSTOgi6ptQSBowr4dRRx4dmigMBNgiN3rS5RZ51l",
-        consumer_key: "Lv3IN1MKLABwVvpKrh7z13SuI",
-        "Content-Type": "application/x-www-form-urlencoded",
-        consumer_secret: "Z6uVPTfWvlraSNKoEDMqM35V2rRSGhh6vg4qN9RI4Vm7yutckT"
-      }
-    };
-    axios
-      .all([
-        axios.get(
-          API_SERVER_HOST + "?q=🥰&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=🙈&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=🤡&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=🤔&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=🤑&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=😂&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=👶&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=💂‍&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=🤺&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=🤹‍&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=👏&geocode=45.604186,-96.650757,2523km",
-          config
-        ),
-        axios.get(
-          API_SERVER_HOST + "?q=👃&geocode=45.604186,-96.650757,2523km",
-          config
-        )
-      ])
-      .then(
-        axios.spread(
-          (
-            heartface,
-            monkeyeyes,
-            clown,
-            thinking,
-            moneyeyes,
-            laughing,
-            baby,
-            hatman,
-            fencing,
-            juggling,
-            clap,
-            nose
-          ) => {
-            circles["heartface"] = heartface.data.statuses.length;
-            circles["monkeyeyes"] = monkeyeyes.data.statuses.length;
-            circles["clown"] = clown.data.statuses.length;
-            circles["thinking"] = thinking.data.statuses.length;
-            circles["moneyeyes"] = moneyeyes.data.statuses.length;
-            circles["laughing"] = laughing.data.statuses.length;
-            circles["baby"] = baby.data.statuses.length;
-            circles["hatman"] = hatman.data.statuses.length;
-            circles["fencing"] = fencing.data.statuses.length;
-            circles["juggling"] = juggling.data.statuses.length;
-            circles["clap"] = clap.data.statuses.length;
-            circles["nose"] = nose.data.statuses.length;
-            this.setState({ circleData: circles });
-            console.log(circles);
-          }
-        )
-      );
+    // const circles = {};
+    // var config = {
+    //   headers: {
+    //     Authorization:
+    //       "Bearer AAAAAAAAAAAAAAAAAAAAAGC%2BAAEAAAAAQBDuL%2BuzLMt2L1V6vVejiYu%2By%2Fg%3DbhzUhGy3XIGSTOgi6ptQSBowr4dRRx4dmigMBNgiN3rS5RZ51l",
+    //     consumer_key: "Lv3IN1MKLABwVvpKrh7z13SuI",
+    //     "Content-Type": "application/x-www-form-urlencoded",
+    //     consumer_secret: "Z6uVPTfWvlraSNKoEDMqM35V2rRSGhh6vg4qN9RI4Vm7yutckT"
+    //   }
+    // };
+    // axios
+    //   .all([
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🥰&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🙈&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🤡&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🤔&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🤑&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=😂&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=👶&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=💂‍&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🤺&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=🤹‍&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=👏&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     ),
+    //     axios.get(
+    //       API_SERVER_HOST + "?q=👃&geocode=45.604186,-96.650757,2523km",
+    //       config
+    //     )
+    //   ])
+    //   .then(
+    //     axios.spread(
+    //       (
+    //         heartface,
+    //         monkeyeyes,
+    //         clown,
+    //         thinking,
+    //         moneyeyes,
+    //         laughing,
+    //         baby,
+    //         hatman,
+    //         fencing,
+    //         juggling,
+    //         clap,
+    //         nose
+    //       ) => {
+    //         circles["heartface"] = heartface.data.statuses.length;
+    //         circles["monkeyeyes"] = monkeyeyes.data.statuses.length;
+    //         circles["clown"] = clown.data.statuses.length;
+    //         circles["thinking"] = thinking.data.statuses.length;
+    //         circles["moneyeyes"] = moneyeyes.data.statuses.length;
+    //         circles["laughing"] = laughing.data.statuses.length;
+    //         circles["baby"] = baby.data.statuses.length;
+    //         circles["hatman"] = hatman.data.statuses.length;
+    //         circles["fencing"] = fencing.data.statuses.length;
+    //         circles["juggling"] = juggling.data.statuses.length;
+    //         circles["clap"] = clap.data.statuses.length;
+    //         circles["nose"] = nose.data.statuses.length;
+    //         this.setState({ circleData: circles });
+    //         console.log(circles);
+    //       }
+    //     )
+    //   );
     this.createCircularPackingChart();
   }
   componentDidUpdate() {
@@ -125,29 +125,38 @@ class CircularPacking extends Component {
 
     var node = this.node;
     var data = this.props.data;
+    data = Object.entries(data)
+        .reduce((acc, cur) => {
+            const newItem = {
+                emoji: cur[0],
+                count: cur[1]
+            }
+            acc.push(newItem)
+            return acc
+        }, [])
 
     // append the svg object to the body of the page
     const svg = select(node)
+    .attr("width", width)
+    .attr("height", height)
       .append("g")
-      .attr("width", width)
-      .attr("height", height);
     // console.log(svg);
     // Read data
-    d3.csv(
-      "/api",
-      // "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv",
-      function(data) {
-        // Filter a bit the data -> more than 1 million inhabitants
-        // data = data.filter(function(d) {
-        //   return d.value > 10000000;
-        // });
-        console.log(data);
-      }
-    );
-
-    data = this.state.circleData;
-    console.log(data);
-    console.log(this.state.circleData);
+    // d3.csv(
+    //   "/api",
+    //   // "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv",
+    //   function(data) {
+    //     // Filter a bit the data -> more than 1 million inhabitants
+    //     // data = data.filter(function(d) {
+    //     //   return d.value > 10000000;
+    //     // });
+    //     console.log(data);
+    //   }
+    // );
+    //
+    // data = this.state.circleData;
+    // console.log(data);
+    // console.log(this.state.circleData);
 
     // Color palette for continents?
     var color = d3
@@ -189,32 +198,44 @@ class CircularPacking extends Component {
     // Initialize the circle: all located at the center of the svg area
     node = svg
       .append("g")
-      .selectAll("circle")
-      .data(data)
-      .enter()
+        .attr("class", "group-container")
+        .selectAll("circle")
+        .data(data)
+        .enter()
+  node
       .append("circle")
-      .attr("class", "circle")
-      .attr("r", function(d) {
-        return size(d);
-      })
-      .attr("cx", width / 2)
-      .attr("cy", height / 2)
-      .style("fill", function(d) {
+        .attr("class", "circle")
+        .attr("cx", (width/2) )
+        .attr("cy", height/2)
+        .attr("r", function(d) {
+        return d.count;
+        })
+        .style("fill", function(d) {
         return color(d);
-      })
-      .style("fill-opacity", 0.8)
-      .attr("stroke", "black")
-      .style("stroke-width", 1)
-      .on("mouseover", mouseover) // What to do when hovered
-      .on("mousemove", mousemove)
-      .on("mouseleave", mouseleave)
-      .call(
-        d3
-          .drag() // call specific function when circle is dragged
-          .on("start", dragstarted)
-          .on("drag", dragged)
-          .on("end", dragended)
-      );
+        })
+        .style("fill-opacity", 0.8)
+        .attr("stroke", "black")
+        .style("stroke-width", 1)
+        .on("mouseover", mouseover) // What to do when hovered
+        .on("mousemove", mousemove)
+        .on("mouseleave", mouseleave)
+        .call(
+            d3
+              .drag() // call specific function when circle is dragged
+              .on("start", dragstarted)
+              .on("drag", dragged)
+              .on("end", dragended)
+         )
+      node.append('text')
+          .attr('class', 'emojis')
+          .text(d => d.emoji)
+          .attr('dx', d => d.x)
+          .attr('dy', d => d.y)
+          .attr('textAnchor', 'middle')
+
+      var circles = d3.selectAll('.circle')
+      var emojis = d3.selectAll('.emojis')
+      console.log(node)
 
     // Features of the forces applied to the nodes:
     var simulation = d3
@@ -233,24 +254,27 @@ class CircularPacking extends Component {
           .forceCollide()
           .strength(0.2)
           .radius(function(d) {
-            return size(d) + 3;
+            return d.count;
           })
           .iterations(1)
       ); // Force that avoids circle overlapping
-
+    //
     // Apply these forces to the nodes and update their positions.
     // Once the force algorithm is happy with positions ('alpha' value is low enough), simulations will stop.
     simulation.nodes(data).on("tick", function(d) {
-      node
+      circles
         .attr("cx", function(d) {
           return d.x;
         })
         .attr("cy", function(d) {
           return d.y;
         });
+        emojis
+            .attr('dx', d=>d.x)
+            .attr('dy', d=>d.y)
     });
 
-    // What happens when a circle is dragged?
+    // // What happens when a circle is dragged?
     function dragstarted(d) {
       if (!d3.event.active) simulation.alphaTarget(0.03).restart();
       d.fx = d.x;
@@ -265,11 +289,23 @@ class CircularPacking extends Component {
       d.fx = null;
       d.fy = null;
     }
+
+
+  // node.append("text")
+  //     .attr("x", function(d) {
+  //         console.log(d)
+  //         return d.x;
+  //     })
+  //     .attr("y", function(d) { return d.y; })
+  //     .attr("dy", ".35em")
+  //     .text(function(d) { return d.emoji; });
   }
 
   render() {
     return (
-      <svg ref={node => (this.node = node)} width={500} height={500}></svg>
+      <svg ref={node => (this.node = node)}  fill={'#c8c8c8'}>
+
+      </svg>
     );
   }
 }

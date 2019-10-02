@@ -102,7 +102,7 @@ class BarChart extends Component {
       svgHeight = 200;
     var barWidth = svgWidth / this.state.data.length;
     var svg = d3
-      .select("svg")
+      .select(".barchart")
       .attr("width", svgWidth)
       .attr("height", svgHeight)
       .style("background", "#c4c4c4")
@@ -187,7 +187,7 @@ class BarChart extends Component {
         <h3 style={{ "text-align": "center" }}>
           Usage of 🤡 Throughout the Day
         </h3>
-        <svg ref={node => (this.node = node)} className="svg"></svg>
+        <svg ref={node => (this.node = node)} className="barchart"></svg>
         <div>
           12-3AM&nbsp;&nbsp; 3-6AM &nbsp;&nbsp;6-9AM &nbsp;&nbsp;9-12PM
           &nbsp;&nbsp;12-3PM &nbsp;&nbsp;3-6PM&nbsp;&nbsp; 6-9PM

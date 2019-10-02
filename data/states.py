@@ -63,7 +63,7 @@ def process_states():
         for state, abbr in states:
             data[state] = state
             data[abbr] = state
-x`
+
     with open('states-abbr.json', 'w+') as f:
         json.dump(data, f)
 
