@@ -182,7 +182,19 @@ class BarChart extends Component {
   }
 
   render() {
-    return <svg ref={node => (this.node = node)} className="svg"></svg>;
+    return (
+      <div>
+        <h3 style={{ "text-align": "center" }}>
+          Usage of 🤡 Throughout the Day
+        </h3>
+        <svg ref={node => (this.node = node)} className="svg"></svg>
+        <div>
+          12-3AM&nbsp;&nbsp; 3-6AM &nbsp;&nbsp;6-9AM &nbsp;&nbsp;9-12PM
+          &nbsp;&nbsp;12-3PM &nbsp;&nbsp;3-6PM&nbsp;&nbsp; 6-9PM
+          &nbsp;&nbsp;9-12AM
+        </div>
+      </div>
+    );
   }
 }
 export default BarChart;
